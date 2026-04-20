@@ -1,2 +1,3 @@
 recorded_at,campaign_id,campaign_name,step,variant_index,subject_line,sent,positive_replies,positive_reply_rate,outcome
 2026-04-20T18:54:46.277903Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",287,0,0.0,discard
+2026-04-20T19:56:45.658778Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",287,0,0.0,discard
