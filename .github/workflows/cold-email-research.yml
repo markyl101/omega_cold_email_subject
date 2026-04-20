@@ -1,0 +1,83 @@
+name: cold-email-subject-line-research
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 * * * *" # hourly
+
+permissions:
+  contents: write
+  # Needed to attach workflow artifacts (CSV / .state) to the run.
+  actions: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Allow pushing the results CSV back to the repo (same branch).
+          persist-credentials: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore state cache
+        uses: actions/cache@v4
+        with:
+          path: cold_email_subject_line_research/.state
+          key: cold-email-subject-line-research-state
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r cold_email_subject_line_research/requirements.txt
+
+      - name: Run loop
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+          INSTANTLY_CAMPAIGN_ID: ${{ secrets.INSTANTLY_CAMPAIGN_ID }}
+          INSTANTLY_CAMPAIGN_IDS: ${{ secrets.INSTANTLY_CAMPAIGN_IDS }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          CEA_WINDOW_HOURS: ${{ vars.CEA_WINDOW_HOURS }}
+          CEA_MIN_SENT_PER_VARIANT: ${{ vars.CEA_MIN_SENT_PER_VARIANT }}
+          CEA_STEP: ${{ vars.CEA_STEP }}
+          CEA_VARIANTS: ${{ vars.CEA_VARIANTS }}
+          CEA_BASELINE_POSITIVE_RATE: ${{ vars.CEA_BASELINE_POSITIVE_RATE }}
+          CEA_BASELINE_SUBJECT: ${{ vars.CEA_BASELINE_SUBJECT }}
+          # Outside .state/ so it can be committed; see "Commit results CSV" below.
+          CEA_RESULTS_CSV: cold_email_subject_line_research/subject_test_results.csv
+        run: |
+          python cold_email_subject_line_research/run.py
+
+      # Download from the run page if you prefer a zip; optional duplicate of the committed CSV.
+      - name: Upload .state for download
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: subject-line-research-state
+          path: cold_email_subject_line_research/.state/
+          if-no-files-found: ignore
+
+      - name: Commit results CSV
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          f="cold_email_subject_line_research/subject_test_results.csv"
+          if [ ! -f "$f" ]; then
+            echo "No CSV yet (no completed keep/discard trial)."
+            exit 0
+          fi
+          git add "$f"
+          if git diff --staged --quiet; then
+            echo "CSV unchanged."
+            exit 0
+          fi
+          git commit -m "chore: update subject test results [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
