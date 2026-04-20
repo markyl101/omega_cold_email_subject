@@ -1,14 +1,12 @@
 name: cold-email-subject-line-research
 
-on:
+"on":
   workflow_dispatch: {}
   schedule:
     - cron: "0 * * * *" # hourly
 
 permissions:
   contents: write
-  # Needed to attach workflow artifacts (CSV / .state) to the run.
-  actions: write
 
 jobs:
   run:
