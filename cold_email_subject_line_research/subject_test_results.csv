@@ -78,3 +78,4 @@ recorded_at,campaign_id,campaign_name,step,variant_index,subject_line,sent,posit
 2026-04-25T16:32:52.802347Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
 2026-04-25T17:32:19.278585Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
 2026-04-25T18:38:39.418838Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
+2026-04-25T19:39:09.258966Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
