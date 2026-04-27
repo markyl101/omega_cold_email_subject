@@ -105,3 +105,4 @@ recorded_at,campaign_id,campaign_name,step,variant_index,subject_line,sent,posit
 2026-04-27T05:46:26.183823Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
 2026-04-27T08:08:20.817274Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
 2026-04-27T10:55:03.946047Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
+2026-04-27T12:17:39.820418Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",902,1,0.00110865,discard
