@@ -123,3 +123,4 @@ recorded_at,campaign_id,campaign_name,step,variant_index,subject_line,sent,posit
 2026-04-29T05:47:08.406315Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",1119,2,0.00178731,discard
 2026-04-29T08:03:17.602891Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",1119,2,0.00178731,discard
 2026-04-29T10:48:07.397286Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",1119,2,0.00178731,discard
+2026-04-29T12:12:21.641104Z,59b6a17f-6188-4471-a5ff-b6a6da29dd9d,Courses | Takedown | Future Learn,1,0,"{{firstName}}, Your Course",1119,2,0.00178731,discard
